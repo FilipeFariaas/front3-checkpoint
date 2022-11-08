@@ -1,9 +1,11 @@
-//Este componente deverá receber dados por Props e mostrar as Informações em Tela
+export function Card (props) {
+    const colorName = props.colorName
+    const colorCode = props.colorCode
 
-export function Card () {
-  return (
-    <div>
-
-    </div>
-  )
+    return (
+        <div>
+            <p>{colorName}</p>
+            <strong>{colorCode}</strong>
+        </div>
+    )
 }
