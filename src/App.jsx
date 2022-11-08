@@ -1,11 +1,15 @@
 import {useState} from "react";
 import {Card} from "./Card";
 
+import './app.scss'
+
 function App() {
     const [colors, setColors] = useState([])
 
     const [colorName, setColorName] = useState("")
     const [colorCode, setColorCode] = useState("")
+
+    const [formError, setFormError] = useState(false)
 
   function addColor(event) {
       event.preventDefault()
@@ -14,18 +18,24 @@ function App() {
           colorName: colorName,
           colorCode: colorCode
       }
+
+      if (colorName.length < 3 || colorCode < 6) {
+          setFormError(true)
+          return
+      }
+
+      setFormError(false)
+
       setColors([...colors, color])
 
       setColorName("")
       setColorCode("")
-
-      console.log(colors)
   }
 
   return (
     <div className="App">
         <h1>ADICIONAR NOVA COR</h1>
-        <form onSubmit={event => addColor(event)}>
+        <form className={formError ? "form-error" : ""} onSubmit={event => addColor(event)}>
             <fieldset>
                 <label htmlFor="name">Nome</label>
                 <input
@@ -34,6 +44,7 @@ function App() {
                     value={colorName}
                     placeholder="Digite o nome da cor"
                     onChange={event => setColorName(event.target.value)}
+                    required="required"
                 />
             </fieldset>
             <fieldset>
@@ -44,10 +55,17 @@ function App() {
                     value={colorCode}
                     placeholder="Digite o valor hexadecimal"
                     onChange={event => setColorCode(event.target.value)}
+                    required="required"
                 />
             </fieldset>
             <button type="submit">ADICIONAR</button>
         </form>
+
+        {formError ? (
+            <span><strong>O formulário contém erro</strong></span>
+            ) : null
+        }
+
         <section>
             <h1>CORES FAVORITAS</h1>
             {
