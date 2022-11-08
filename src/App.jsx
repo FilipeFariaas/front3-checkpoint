@@ -19,7 +19,7 @@ function App() {
           colorCode: colorCode
       }
 
-      if (colorName.length < 3 || colorCode < 6) {
+      if (colorName.length < 3 || colorCode < 7) {
           setFormError(true)
           return
       }
@@ -53,7 +53,7 @@ function App() {
                     type="text"
                     id="color"
                     value={colorCode}
-                    placeholder="Digite o valor hexadecimal"
+                    placeholder="Digite o hexadecimal (com '#')"
                     onChange={event => setColorCode(event.target.value)}
                     required="required"
                 />

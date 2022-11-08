@@ -3,7 +3,7 @@ export function Card (props) {
     const colorCode = props.colorCode
 
     return (
-        <div>
+        <div style={{backgroundColor: colorCode}}>
             <p>{colorName}</p>
             <strong>{colorCode}</strong>
         </div>
