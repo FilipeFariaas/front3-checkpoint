@@ -1,0 +1,14 @@
+.color-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5px;
+
+  width: 250px;
+
+  padding: 20px 10px;
+
+  p {
+    margin: 0;
+  }
+}

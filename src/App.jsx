@@ -19,7 +19,7 @@ function App() {
           colorCode: colorCode
       }
 
-      if (colorName.length < 3 || colorCode < 7) {
+      if (colorName.length < 3) {
           setFormError(true)
           return
       }
@@ -50,10 +50,9 @@ function App() {
             <fieldset>
                 <label htmlFor="color">Cor</label>
                 <input
-                    type="text"
+                    type="color"
                     id="color"
                     value={colorCode}
-                    placeholder="Digite o hexadecimal (com '#')"
                     onChange={event => setColorCode(event.target.value)}
                     required="required"
                 />
@@ -61,20 +60,23 @@ function App() {
             <button type="submit">ADICIONAR</button>
         </form>
 
-        {formError ? (
-            <span><strong>O formulário contém erro</strong></span>
+        {
+            formError ? (
+            <small><strong>O formulário contém erro</strong></small>
             ) : null
         }
 
         <section>
             <h1>CORES FAVORITAS</h1>
-            {
-                colors.map((color, index) => {
-                    return (
-                        <Card key={index} colorName={color.colorName} colorCode={color.colorCode} />
-                    )
-                })
-            }
+            <div className="color-cards">
+                {
+                    colors.map((color, index) => {
+                        return (
+                            <Card key={index} colorName={color.colorName} colorCode={color.colorCode} />
+                        )
+                    })
+                }
+            </div>
         </section>
     </div>
   )
